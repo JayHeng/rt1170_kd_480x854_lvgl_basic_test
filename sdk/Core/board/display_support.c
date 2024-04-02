@@ -17,6 +17,8 @@
 #elif (DEMO_PANEL_RASPI_7INCH == DEMO_PANEL)
 #include "rpi.h"
 #include "pca6416.h"
+#elif (DEMO_PANEL_KD050FWFIA019 == DEMO_PANEL)
+#include "fsl_ili9806e.h"
 #endif
 #include "pin_mux.h"
 #include "board.h"
@@ -69,6 +71,15 @@
 #define DEMO_VSW 2
 #define DEMO_VFP 7
 #define DEMO_VBP 21
+
+#elif (DEMO_PANEL == DEMO_PANEL_KD050FWFIA019)
+
+#define DEMO_HSW          4
+#define DEMO_HFP          18
+#define DEMO_HBP          30
+#define DEMO_VSW          4
+#define DEMO_VFP          20
+#define DEMO_VBP          30
 
 #endif
 
@@ -187,6 +198,24 @@ static display_handle_t rpiHandle = {
     .resource = &rpiResource,
     .ops      = &rpi_ops,
 };
+#elif (DEMO_PANEL == DEMO_PANEL_KD050FWFIA019)
+
+static mipi_dsi_device_t dsiDevice = {
+    .virtualChannel = 0,
+    .xferFunc       = BOARD_DSI_Transfer,
+};
+
+static const ili9806e_resource_t ili9806eResource = {
+    .dsiDevice    = &dsiDevice,
+    .pullResetPin = BOARD_PullPanelResetPin,
+    .pullPowerPin = BOARD_PullPanelPowerPin,
+};
+
+static display_handle_t ili9806eHandle = {
+    .resource = &ili9806eResource,
+    .ops      = &ili9806e_ops,
+};
+
 #else
 
 static mipi_dsi_device_t dsiDevice = {
@@ -330,6 +359,8 @@ static void BOARD_InitLcdifClock(void)
         .div = 9,
 #elif (DEMO_PANEL == DEMO_PANEL_RASPI_7INCH)
         .div = 20,
+#elif (DEMO_PANEL == DEMO_PANEL_KD050FWFIA019)
+        .div = 18,
 #else
         .div = 15,
 #endif
@@ -420,6 +451,10 @@ static status_t BOARD_InitLcdPanel(void)
 #elif (DEMO_PANEL == DEMO_PANEL_RASPI_7INCH)
 
     status = RPI_Init(&rpiHandle, &displayConfig);
+
+#elif (DEMO_PANEL == DEMO_PANEL_KD050FWFIA019)
+
+    status = ILI9806E_Init(&ili9806eHandle, &displayConfig);
 #else
 
     status = RM68191_Init(&rm68191Handle, &displayConfig);
