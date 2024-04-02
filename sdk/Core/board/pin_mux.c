@@ -119,6 +119,9 @@ void BOARD_InitMipiPanelPins(void) {
       IOMUXC_GPIO_AD_01_GPIO9_IO00,           /* GPIO_AD_01 is configured as GPIO9_IO00 */
       0U);                                    /* Software Input On Field: Input Path is determined by functionality */
   IOMUXC_SetPinMux(
+      IOMUXC_GPIO_AD_08_GPIO9_IO07,           /* GPIO_AD_08 is configured as GPIO9_IO07 */
+      0U);                                    /* Software Input On Field: Input Path is determined by functionality */
+  IOMUXC_SetPinMux(
       IOMUXC_GPIO_AD_02_GPIO9_IO01,           /* GPIO_AD_02 is configured as GPIO9_IO01 */
       0U);                                    /* Software Input On Field: Input Path is determined by functionality */
   IOMUXC_SetPinMux(
@@ -150,6 +153,15 @@ void BOARD_InitMipiPanelPins(void) {
                                                  Domain write protection lock: Neither of DWP bits is locked */
   IOMUXC_SetPinConfig(
       IOMUXC_GPIO_AD_01_GPIO9_IO00,           /* GPIO_AD_01 PAD functional properties : */
+      0x00U);                                 /* Slew Rate Field: Slow Slew Rate
+                                                 Drive Strength Field: normal drive strength
+                                                 Pull / Keep Select Field: Pull Disable, Highz
+                                                 Pull Up / Down Config. Field: Weak pull down
+                                                 Open Drain Field: Disabled
+                                                 Domain write protection: Both cores are allowed
+                                                 Domain write protection lock: Neither of DWP bits is locked */
+  IOMUXC_SetPinConfig(
+      IOMUXC_GPIO_AD_08_GPIO9_IO07,           /* GPIO_AD_08 PAD functional properties : */
       0x00U);                                 /* Slew Rate Field: Slow Slew Rate
                                                  Drive Strength Field: normal drive strength
                                                  Pull / Keep Select Field: Pull Disable, Highz
