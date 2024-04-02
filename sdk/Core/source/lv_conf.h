@@ -48,7 +48,7 @@
 #define LV_MEM_CUSTOM 0
 #if LV_MEM_CUSTOM == 0
 /*Size of the memory available for `lv_mem_alloc()` in bytes (>= 2kB)*/
-#define LV_MEM_SIZE (2048U * 1024U)
+#define LV_MEM_SIZE (4096U * 1024U)
 #else     /* LV_MEM_CUSTOM */
 /*Header for the dynamic memory function*/
 #define LV_MEM_CUSTOM_INCLUDE FreeRTOS.h
@@ -449,7 +449,7 @@
 /*Documentation of the widgets: https://docs.lvgl.io/latest/en/html/widgets/index.html*/
 #define LV_USE_ARC 0
 
-#define LV_USE_BAR 0
+#define LV_USE_BAR 1
 
 #define LV_USE_BTN 0
 
@@ -479,7 +479,7 @@
 #define LV_ROLLER_INF_PAGES 7
 #endif    /* LV_USE_ROLLER */
 
-#define LV_USE_SLIDER 0
+#define LV_USE_SLIDER 1
 
 #define LV_USE_SWITCH 0
 
