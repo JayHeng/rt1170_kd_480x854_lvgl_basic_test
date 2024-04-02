@@ -128,10 +128,10 @@ void BOARD_InitMipiPanelPins(void) {
       IOMUXC_GPIO_DISP_B2_15_GPIO11_IO16,     /* GPIO_DISP_B2_15 is configured as GPIO11_IO16 */
       0U);                                    /* Software Input On Field: Input Path is determined by functionality */
   IOMUXC_SetPinMux(
-      IOMUXC_GPIO_LPSR_04_LPI2C5_SDA,         /* GPIO_LPSR_04 is configured as LPI2C5_SDA */
+      IOMUXC_GPIO_LPSR_06_LPI2C6_SDA,         /* GPIO_LPSR_06 is configured as LPI2C5_SDA */
       1U);                                    /* Software Input On Field: Force input path of pad GPIO_LPSR_04 */
   IOMUXC_SetPinMux(
-      IOMUXC_GPIO_LPSR_05_LPI2C5_SCL,         /* GPIO_LPSR_05 is configured as LPI2C5_SCL */
+	  IOMUXC_GPIO_LPSR_07_LPI2C6_SCL,         /* GPIO_LPSR_07 is configured as LPI2C5_SCL */
       1U);                                    /* Software Input On Field: Force input path of pad GPIO_LPSR_05 */
   IOMUXC_SetPinConfig(
       IOMUXC_GPIO_AD_00_GPIO8_IO31,           /* GPIO_AD_00 PAD functional properties : */
@@ -152,7 +152,7 @@ void BOARD_InitMipiPanelPins(void) {
                                                  Domain write protection: Both cores are allowed
                                                  Domain write protection lock: Neither of DWP bits is locked */
   IOMUXC_SetPinConfig(
-      IOMUXC_GPIO_LPSR_04_LPI2C5_SDA,         /* GPIO_LPSR_04 PAD functional properties : */
+      IOMUXC_GPIO_LPSR_06_LPI2C6_SDA,         /* GPIO_LPSR_06 PAD functional properties : */
       0x20U);                                 /* Slew Rate Field: Slow Slew Rate
                                                  Drive Strength Field: normal driver
                                                  Pull / Keep Select Field: Pull Disable
@@ -161,7 +161,7 @@ void BOARD_InitMipiPanelPins(void) {
                                                  Domain write protection: Both cores are allowed
                                                  Domain write protection lock: Neither of DWP bits is locked */
   IOMUXC_SetPinConfig(
-      IOMUXC_GPIO_LPSR_05_LPI2C5_SCL,         /* GPIO_LPSR_05 PAD functional properties : */
+      IOMUXC_GPIO_LPSR_07_LPI2C6_SCL,         /* GPIO_LPSR_07 PAD functional properties : */
       0x20U);                                 /* Slew Rate Field: Slow Slew Rate
                                                  Drive Strength Field: normal driver
                                                  Pull / Keep Select Field: Pull Disable

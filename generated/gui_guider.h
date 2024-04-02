@@ -21,6 +21,7 @@ typedef struct
 	lv_obj_t *screen;
 	bool screen_del;
 	lv_obj_t *screen_label_1;
+	lv_obj_t *screen_slider_1;
 }lv_ui;
 
 typedef void (*ui_setup_scr_t)(lv_ui * ui);
